@@ -1,0 +1,514 @@
+/* === Futuristic Dark Theme with Animated Neon Hover Effects === */
+:root {
+    --bg-secondary: #181c24;
+    --border-neon: 0 0 8px 2px rgba(0,255,255,0.25);
+    --neon-cyan: #00fff7;
+    --neon-green: #bfff00;
+    --neon-orange: #ffb86c;
+    --neon-pink: #ff6ec7;
+    --text-main: #e0f7fa;
+    --text-muted: #7fffd4;
+    --border-main: rgba(0,255,255,0.2);
+    --radius-main: 30px;
+    --transition: 0.22s cubic-bezier(.4,0,.2,1);
+}
+
+/* === Animated Futuristic Background === */
+body {
+    background:
+        /* Subtle animated dark grid overlay */
+        repeating-linear-gradient(135deg, rgba(0,255,255,0.03) 0 2px, transparent 2px 40px),
+        repeating-linear-gradient(45deg, rgba(191,255,0,0.02) 0 2px, transparent 2px 40px),
+        /* Neon radial glows */
+        radial-gradient(ellipse at 80% 10%, rgba(0,255,255,0.10) 0%, transparent 70%),
+        radial-gradient(ellipse at 20% 90%, rgba(191,255,0,0.08) 0%, transparent 70%),
+        /* Deep animated gradient */
+        linear-gradient(120deg, #07090f 0%, #13151e 60%, #0a0c13 100%);
+    background-blend-mode: lighten, lighten, lighten, lighten, normal;
+    background-size:
+        180px 180px,
+        220px 220px,
+        300% 300%,
+        300% 300%,
+        200% 200%;
+    animation: move-bg 18s ease-in-out infinite;
+    color: var(--text-main);
+    font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    letter-spacing: 0.03em;
+    transition: background 0.3s;
+    overflow-x: hidden;
+}
+@keyframes move-bg {
+    0% { background-position: 
+        0% 0%, 
+        0% 100%, 
+        0% 50%, 
+        100% 50%, 
+        0% 50%; }
+    50% { background-position: 
+        100% 100%, 
+        100% 0%, 
+        100% 50%, 
+        0% 50%, 
+        100% 50%; }
+    100% { background-position: 
+        0% 0%, 
+        0% 100%, 
+        0% 50%, 
+        100% 50%, 
+        0% 50%; }
+}
+
+.home {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: transparent;
+}
+
+/* === Navigation Bar === */
+nav {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--text-main);
+    padding: 10px 30px;
+    font-size: 2.2rem;
+    background: rgba(24,28,36,0.98);
+    box-shadow: 0 2px 24px 0 rgba(0,255,255,0.10);
+    border-bottom: 1.5px solid var(--border-main);
+    letter-spacing: 0.08em;
+    position: relative;
+    backdrop-filter: blur(6px);
+    z-index: 10;
+    transition: background var(--transition);
+}
+nav, .logo, #tag, .cate, .upImg, .genImg, .chat, .user, .ai, .select-up, .select-gen {
+    text-shadow: none !important;
+    transition: color var(--transition), text-shadow var(--transition);
+}
+
+/* === Logo === */
+.logo-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: box-shadow var(--transition), background var(--transition);
+    padding: 4px;
+    margin-left: 16px;
+    box-shadow: 0 0 0 0 transparent;
+    background: transparent;
+    outline: none;
+    border: none;
+    height: 56px;
+    width: 56px;
+}
+.logo-img img {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    transition: box-shadow var(--transition), filter var(--transition);
+    box-shadow: 0 0 8px 0 var(--neon-cyan);
+    background: var(--bg-main);
+    object-fit: cover;
+}
+.logo-img:hover,
+.logo-img:focus {
+    background: rgba(0,255,255,0.08);
+    box-shadow: 0 0 18px 2px var(--neon-cyan), 0 0 8px 2px var(--neon-green);
+}
+.logo-img:hover img,
+.logo-img:focus img {
+    filter: drop-shadow(0 0 16px var(--neon-cyan));
+    box-shadow: 0 0 24px 2px var(--neon-cyan);
+}
+
+/* === Hero Section === */
+.hero {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: var(--text-main);
+    gap: 24px;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+#tag {
+    font-size: 2.5vmax;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-main);
+    text-shadow: none;
+    transition: color var(--transition), text-shadow var(--transition);
+}
+#tag:hover, #tag:focus {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 16px var(--neon-cyan), 0 0 8px var(--neon-green);
+}
+
+/* === Logo Text === */
+.logo {
+    cursor: pointer;
+    font-size: 2.5rem;
+    color: var(--text-main);
+    text-shadow: none;
+    transition: color var(--transition), text-shadow var(--transition);
+}
+.logo:hover, .logo:focus {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 24px var(--neon-cyan), 0 0 8px var(--neon-green);
+}
+
+/* === Category Buttons === */
+.cate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* === Main Action Buttons === */
+.upImg, .genImg, .chat {
+    padding: 12px 28px;
+    border: 2px solid var(--border-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    border-radius: var(--radius-main);
+    background: var(--bg-secondary);
+    box-shadow: 0 0 0 0 transparent;
+    color: var(--text-main);
+    position: relative;
+    overflow: hidden;
+    transition: 
+        background var(--transition),
+        color var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition),
+        text-shadow var(--transition);
+}
+.upImg:hover, .genImg:hover, .chat:hover,
+.upImg:focus, .genImg:focus, .chat:focus {
+    background: rgba(0,255,255,0.08);
+    color: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 18px 2px var(--neon-cyan), 0 0 8px 2px var(--neon-green);
+    text-shadow: 0 0 12px var(--neon-cyan), 0 0 4px var(--neon-green);
+}
+
+/* === SVG Icons for Buttons === */
+.upImg svg, .genImg svg, .chat svg {
+    width: 25px;
+    height: 25px;
+    transition: filter var(--transition);
+    filter: none;
+}
+.upImg svg { color: var(--neon-green);}
+.genImg svg { color: var(--neon-cyan);}
+.chat svg { color: var(--neon-orange);}
+.upImg:hover svg, .upImg:focus svg {
+    filter: drop-shadow(0 0 16px var(--neon-green));
+}
+.genImg:hover svg, .genImg:focus svg {
+    filter: drop-shadow(0 0 16px var(--neon-cyan));
+}
+.chat:hover svg, .chat:focus svg {
+    filter: drop-shadow(0 0 16px var(--neon-orange));
+}
+
+/* === Input Section === */
+.input-box {
+    width: 100%;
+    height: calc(100vh - 80px - 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; 
+    padding: 0px 20px;
+    position: fixed;
+    bottom: 0;
+    background: linear-gradient(0deg, var(--bg-main) 90%, transparent 100%);
+    z-index: 10;
+}
+
+#add, #submit {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--border-main);
+    border-radius: 50px;
+    background-color: var(--bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    cursor: pointer;
+    box-shadow: 0 0 0 0 transparent;
+    transition: box-shadow var(--transition), border-color var(--transition);
+}
+#add svg, #submit svg {
+    width: 22px;
+    height: 22px;
+    color: var(--text-main);
+    filter: none;
+    transition: filter var(--transition);
+}
+#add:hover, #submit:hover, #add:focus, #submit:focus {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 16px 2px var(--neon-cyan);
+}
+#add:hover svg, #submit:hover svg,
+#add:focus svg, #submit:focus svg {
+    filter: drop-shadow(0 0 16px var(--neon-cyan));
+}
+
+form input {
+    max-width: 60%;
+    width: calc(100% - 120px);
+    height: 60px;
+    background-color: var(--bg-secondary);
+    border: 2px solid var(--border-main);
+    outline: none;
+    border-radius: var(--radius-main);
+    color: var(--text-main);
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    box-shadow: 0 0 0 0 transparent;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+form input:focus {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 12px 2px var(--neon-cyan);
+}
+
+/* === Chat Page === */
+.chat-page {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    overflow-y: auto;
+    background: transparent;
+}
+
+/* === Chat Bubbles === */
+.user, .ai {
+    width: 90%;
+    padding: 20px 30px;
+    color: var(--text-main);
+    background-color: var(--bg-secondary);
+    border: 2px solid var(--border-main);
+    border-radius: var(--radius-main);
+    font-size: 1.15rem;
+    display: flex;
+    align-items: start;
+    gap: 20px;
+    justify-content: center; 
+    flex-direction: column;
+    box-shadow: 0 0 8px 0 rgba(0,255,255,0.08);
+    transition: border-color var(--transition), box-shadow var(--transition), color var(--transition), text-shadow var(--transition);
+    text-shadow: none;
+}
+.user:hover, .ai:hover, .user:focus, .ai:focus {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 16px var(--neon-cyan), 0 0 8px var(--neon-green);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 18px 2px var(--neon-cyan), 0 0 8px 2px var(--neon-green);
+}
+.user img {
+    width: 200px;
+    border-radius: 20px;
+    box-shadow: 0 0 16px 0 var(--neon-cyan);
+}
+
+/* === Pop-up === */
+.pop-up {
+    width: 220px;
+    min-height: 120px;
+    position: absolute;
+    bottom: 120px;
+    left: 15%;
+    background-color: var(--bg-secondary);
+    border: 2px solid var(--border-main);
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    box-shadow: 0 0 16px 0 var(--neon-cyan);
+    z-index: 100;
+    text-shadow: none;
+    transition: box-shadow var(--transition), border-color var(--transition), color var(--transition), text-shadow var(--transition);
+}
+.pop-up:hover, .pop-up:focus {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 16px var(--neon-cyan), 0 0 8px var(--neon-green);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 24px 2px var(--neon-cyan), 0 0 8px 2px var(--neon-green);
+}
+
+/* === Select Options === */
+.select-up, .select-gen {
+    color: var(--text-main);
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    font-size: 1.1rem;
+    border-radius: 15px;
+    background: transparent;
+    text-shadow: none;
+    transition: background var(--transition), box-shadow var(--transition), color var(--transition), text-shadow var(--transition);
+}
+.select-up:hover, .select-gen:hover,
+.select-up:focus, .select-gen:focus {
+    background-color: rgba(0,255,255,0.12);
+    color: var(--neon-cyan);
+    box-shadow: 0 0 12px 2px var(--neon-cyan);
+    text-shadow: 0 0 12px var(--neon-cyan), 0 0 4px var(--neon-green);
+}
+.select-up svg {
+    color: var(--neon-green);
+    width: 25px;
+    height: 25px;
+    filter: none;
+    transition: filter var(--transition);
+}
+.select-gen svg {
+    color: var(--neon-cyan);
+    width: 25px;
+    height: 25px;
+    filter: none;
+    transition: filter var(--transition);
+}
+.select-up:hover svg, .select-up:focus svg {
+    filter: drop-shadow(0 0 12px var(--neon-green));
+}
+.select-gen:hover svg, .select-gen:focus svg {
+    filter: drop-shadow(0 0 12px var(--neon-cyan));
+}
+
+/* === Responsive Design === */
+@media (max-width: 700px) {
+    nav {
+        font-size: 1.5rem;
+        padding: 10px 10px;
+        height: 64px;
+    }
+    .logo-img {
+        height: 40px;
+        width: 40px;
+        padding: 2px;
+    }
+    .logo-img img {
+        height: 32px;
+        width: 32px;
+    }
+    .hero {
+        gap: 14px;
+        padding: 8px 5px;
+    }
+    .cate {
+        gap: 10px;
+    }
+    .upImg, .genImg, .chat {
+        padding: 10px 12px;
+        font-size: 1rem;
+    }
+    .user, .ai {
+        padding: 14px 10px;
+        font-size: 1rem;
+    }
+    .pop-up {
+        left: 5%;
+        width: 90vw;
+        min-width: unset;
+    }
+    .input-box {
+        position: fixed;
+        height: auto;
+        padding-bottom: 16px;
+        background: linear-gradient(0deg, var(--bg-main) 98%, transparent 100%);
+    }
+    form input {
+        font-size: 1rem;
+        padding: 8px 10px;
+    }
+    #add, #submit {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+@media (max-width: 500px) {
+    #tag {
+        font-size: 1.2rem;
+    }
+    nav {
+        font-size: 1.1rem;
+        height: 54px;
+    }
+    .logo-img {
+        height: 32px;
+        width: 32px;
+        padding: 1px;
+    }
+    .logo-img img {
+        height: 24px;
+        width: 24px;
+    }
+    .hero {
+        height: 60%;
+    }
+    .chat-page {
+        padding: 8px;
+        gap: 10px;
+    }
+    .user, .ai {
+        width: 98%;
+        padding: 10px 6px;
+    }
+    .pop-up {
+        left: 2vw;
+        width: 96vw;
+        min-width: unset;
+        padding: 6px;
+    }
+    .input-box {
+        position: fixed;
+        height: auto;
+        padding-bottom: 16px;
+        background: linear-gradient(0deg, var(--bg-main) 98%, transparent 100%);
+    }
+    form input {
+        max-width: 100%;
+        width: 100%;
+        font-size: 0.98rem;
+        padding: 6px 8px;
+    }
+    #add, #submit {
+        width: 40px;
+        height: 40px;
+    }
+}
